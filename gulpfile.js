@@ -43,20 +43,20 @@ gulp.task('styles', function () {
     .pipe(postcss([autoprefixer({browsers: ['last 2 versions', 'ie >= 9', 'Android >= 4.1', 'Safari >= 8', 'iOS >= 7']}), mqpacker({sort: true})]))
     .pipe(concat('app.min.css'))
     .pipe(cleanCSS())
-    .pipe(gulp.dest('./dist/assets/css'))
+    .pipe(gulp.dest('./extra/wordpress/wp-content/themes/whattobuildnext/assets/css'))
 });
 
 // Compile images
 gulp.task('images', function () {
   return gulp.src('./src/res/img/**/*.*')
     .pipe(imagemin())
-    .pipe(gulp.dest('./dist/assets/img'))
+    .pipe(gulp.dest('./extra/wordpress/wp-content/themes/whattobuildnext/assets/img'))
 });
 
 // Compile fonts
 gulp.task('fonts', function () {
   return gulp.src(['./src/res/fonts/*.*'])
-    .pipe(gulp.dest('./dist/assets/fonts'))
+    .pipe(gulp.dest('./extra/wordpress/wp-content/themes/whattobuildnext/assets/fonts'))
 });
 
 // Concat js scripts
@@ -72,7 +72,7 @@ gulp.task('scripts', function () {
     }))
     .pipe(concat('app.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/assets/js/'))
+    .pipe(gulp.dest('./extra/wordpress/wp-content/themes/whattobuildnext/assets/js/'))
 });
 
 // Nunjucks
@@ -88,6 +88,15 @@ gulp.task('nunjucks', function () {
     .pipe(gulp.dest('./dist/'))
 });
 
+// Template build task
+//******************************************
+
+gulp.task('compile', function () {
+    return gulp.src(['./src/n-templates/*.php', './src/n-templates/style.css'])
+    .pipe(nunjucks.compile())
+    .pipe(gulp.dest('./extra/wordpress/wp-content/themes/whattobuildnext'))
+});
+
 // Watch tasks
 //******************************************
 gulp.task('watch', function () {
@@ -95,8 +104,10 @@ gulp.task('watch', function () {
   gulp.watch('./src/res/img/**/*', ['images']);
   gulp.watch('./src/res/js/**/*', ['scripts']);
   gulp.watch('./src/res/nunjucks/**/*', ['nunjucks']);
+  gulp.watch('./src/n-templates/**/*', ['compile']);
 });
 
-gulp.task('default', ['sass-lint', 'styles', 'images', 'scripts', 'nunjucks', 'fonts']);
+gulp.task('default', ['sass-lint', 'styles', 'images', 'scripts', 'fonts', 'compile']);
 
 gulp.task('dev', ['default', 'watch']);
+
