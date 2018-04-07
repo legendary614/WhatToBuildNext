@@ -1,0 +1,72 @@
+.c-burger {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 42px;
+  height: 42px;
+  font-size: 0;
+  text-indent: -9999px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: 0;
+  cursor: pointer;
+  transition: background .3s;
+  background: none;
+
+  &__line {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    right: 5px;
+    height: 3px;
+    background: $black;
+    transition: background .3s .3s ease;
+
+    &::after,
+    &::before {
+      position: absolute;
+      display: block;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $black;
+      content: '';
+      transition-duration: .3s, .3s;
+      transition-delay: .3s, 0s;
+    }
+
+    &::before {
+      top: -11px;
+      transition-property: top, transform;
+    }
+
+    &::after {
+      bottom: -11px;
+      transition-property: bottom, transform;
+    }
+  }
+
+  &--close &__line {
+    background: none;
+    transition: background .3s 0s ease;
+
+    &::after,
+    &::before {
+      transition-delay: 0s, .3s;
+    }
+
+    &::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      bottom: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}

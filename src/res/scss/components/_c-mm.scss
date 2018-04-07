@@ -1,0 +1,107 @@
+.c-mm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  @include res(desktop) {
+    display: none;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 0;
+    background: none;
+    transition: background .5s ease;
+  }
+
+  &__toggleable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    background: $white;
+    transition: width .5s ease;
+    height: 100vh;
+    overflow: hidden;
+    box-shadow: 4px 0 4px $black-transparent;
+    display: flex;
+  }
+
+  &__toggleable-wrap {
+    padding: 20px 40px 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    overflow-y: auto;
+  }
+
+  &__nav {
+    list-style: none;
+    width: 180px;
+
+    &-li {
+      color: $default-font-color;
+      font-weight: 700;
+      margin: 20px 0 0;
+    }
+
+    &-a {
+      text-decoration: none;
+      text-transform: uppercase;
+      line-height: 22px;
+      font-size: 17px;
+      font-weight: 700;
+      color: $default-font-color;
+    }
+
+    &--bottom {
+      margin-top: 20px;
+
+      .c-mm__nav-li {
+        margin: 20px 0 0;
+      }
+
+      .c-mm__nav-a {
+        line-height: normal;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: .1em;
+      }
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    @include res(desktop) {
+      display: none;
+    }
+  }
+
+  &--active {
+    .c-mm__overlay {
+      width: 100%;
+      background: $dark-transparent;
+    }
+
+    .c-mm__toggleable {
+      width: 310px;
+    }
+  }
+}
+
+.body__mm-active {
+  height: 100%;
+  overflow: hidden;
+}

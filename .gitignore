@@ -1,0 +1,10 @@
+.git
+.idea
+node_modules
+npm-debug.log
+.DS_Store
+/temp/
+/dist
+/yarn.lock
+/res/videos
+package-lock.json

@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: $white;
+  color: $default-font-color;
+  font-family: $helvetica-neue;
+  font-size: $default-font-size;
+  line-height: 1.2em;
+  margin: 0;
+  min-width: 375px;
+  padding: 0;
+
+  &.body-popup {
+    overflow: hidden;
+  }
+}
+
+h1,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 50px;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 50px;
+}
+
+h3 {
+  color: $dark-gray;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 50px;
+}

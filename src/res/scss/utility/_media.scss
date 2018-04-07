@@ -1,0 +1,61 @@
+// media queries
+@mixin res($media) {
+  @if $media == xsmall-phone {
+    @media screen and (min-width: 360px) {
+      @content;
+    }
+  }
+  @if $media == small-phone {
+    @media screen and (min-width: 601px) {
+      @content;
+    }
+  } @else if $media == phone-only {
+    @media screen and (max-width: 767px) {
+      @content;
+    }
+  } @else if $media == tablet {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  } @else if $media == tablet-only {
+    @media (min-width: 768px) and (max-width: 991px) {
+      @content;
+    }
+  } @else if $media == phone-tablet-only {
+    @media screen and (max-width: 991px) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media screen and (min-width: 992px) {
+      @content;
+    }
+  } @else if $media == desktop-only {
+    @media (min-width: 992px) and (max-width: 1199px) {
+      @content;
+    }
+  } @else if $media == xlarge {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  } @else if $media == xlarge-only {
+    @media (min-width: 1200px) and (max-width: 1519px) {
+      @content;
+    }
+  } @else if $media == xxlarge {
+    @media screen and (min-width: 1520px) {
+      @content;
+    }
+  } @else if $media == xxxlarge {
+    @media screen and (min-width: 1980px) {
+      @content;
+    }
+  }
+}
+
+@mixin res-height($media) {
+  @if $media == small-phone {
+    @media screen and (min-height: 541px) {
+      @content;
+    }
+  }
+}

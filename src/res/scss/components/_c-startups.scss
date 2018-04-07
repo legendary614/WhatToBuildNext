@@ -1,0 +1,43 @@
+.c-startups {
+  display: flex;
+  flex-flow: row wrap;
+
+  &__startup {
+    padding: 10px 0 0;
+    width: 100%;
+    @include res(tablet-only) {
+      width: 50%;
+
+      &:nth-child(2n+1) {
+        padding-right: 20px;
+      }
+    }
+    @include res(desktop) {
+      width: 50%;
+      padding: 10px 60px 10px 0;
+    }
+  }
+
+  &__img {
+    border: solid 1px $gray-border2;
+    float: left;
+  }
+
+  &__link {
+    color: $black;
+    margin: 0 0 0 15px;
+    font-size: 17px;
+    line-height: 32px;
+
+    .c-icon {
+      margin-left: 7px;
+    }
+  }
+
+  &__text {
+    color: $dark-gray;
+    margin: 0 0 0 89px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}

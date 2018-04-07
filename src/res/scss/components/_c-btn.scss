@@ -1,0 +1,28 @@
+.c-btn {
+  background: $light-green;
+  border: 0;
+  border-radius: 17px;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 15px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  transition: background .3s ease;
+  @include res(desktop) {
+    &:hover {
+      background: $green;
+    }
+  }
+
+  &__text {
+    position: relative;
+  }
+}

@@ -1,0 +1,106 @@
+.c-posts {
+  @extend %container;
+  padding: 0 0 20px;
+  @include res(tablet) {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 10px 20px;
+  }
+  @include res(desktop) {
+    padding: 0 20px 20px;
+  }
+
+  &__post {
+    display: block;
+    padding: 20px 20px 0;
+    text-decoration: none;
+    color: $black;
+    @include res(tablet) {
+      padding: 20px 10px 0;
+      width: 50%;
+    }
+    @include res(desktop) {
+      margin: 20px 0 0;
+      padding: 20px 20px 40px;
+      transition: box-shadow .3s ease;
+    }
+    @include res(xxlarge) {
+      width: 33.3333333%;
+    }
+    @include res(xxxlarge) {
+      width: 25%;
+    }
+
+    &:hover {
+      @include res(desktop) {
+        .c-posts__img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &__pic {
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  &__img {
+    border: 0;
+    width: 100%;
+    @include res(desktop) {
+      transition: transform .3s ease;
+    }
+  }
+
+  &__time {
+    background: $black;
+    border-radius: 17px;
+    color: $white;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 34px;
+    padding: 0 15px;
+    height: 34px;
+    display: inline-block;
+
+    &--blue {
+      background: $light-blue;
+    }
+
+    &--post {
+      position: absolute;
+      right: 15px;
+      bottom: 21px;
+    }
+  }
+
+  &__svg {
+    margin: 0 4px 0 0;
+    vertical-align: -10%;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    margin: 10px 0 5px;
+    @include res(desktop) {
+      font-size: 27px;
+      line-height: 33px;
+      margin: 20px 0 9px;
+    }
+  }
+
+  &__about {
+    color: $dark-gray;
+    font-size: 15px;
+    line-height: 22px;
+    @include res(desktop) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}

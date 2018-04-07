@@ -1,0 +1,58 @@
+.c-footer {
+  @extend %container;
+  @include res(desktop) {
+    height: 101px;
+  }
+
+  &__inner {
+    border-top: solid 1px $gray-border;
+    margin: 0 20px;
+    padding: 11px 0 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    @include res(desktop) {
+      margin: 0 40px;
+      padding: 26px 0 0;
+    }
+  }
+
+  &__copyright {
+    font-size: 15px;
+    line-height: 36px;
+  }
+
+  &__menu {
+    display: none;
+    @include res(desktop) {
+      display: block;
+    }
+  }
+
+  &__menu-a {
+    color: $black;
+    font-size: 15px;
+    line-height: 36px;
+    text-decoration: none;
+    margin: 0 0 0 44px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: $black;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

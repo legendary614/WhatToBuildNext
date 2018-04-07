@@ -1,0 +1,111 @@
+.c-content-list {
+  color: $dark-gray;
+  list-style: none;
+  font-size: 15px;
+  line-height: 32px;
+  margin: 20px 0 0;
+  padding: 0;
+  position: relative;
+  order: 2;
+  @include res(phone-tablet-only) {
+    background: $light-gray;
+    border: solid 1px $gray-border3;
+    border-radius: 3px;
+    padding: 62px 10px 20px 30px;
+    margin: 3px 0 20px;
+
+    &::before {
+      content: 'Content:';
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      z-index: 1;
+    }
+
+    &--collapsed {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 5px 65px 5px 10px;
+
+      &::before {
+        position: static;
+      }
+
+      .c-content-list__toggle {
+        background: none;
+
+        .c-icon {
+          transform: rotate(0deg);
+        }
+      }
+
+      ul,
+      li {
+        display: inline;
+        margin: 0;
+      }
+
+      li > a {
+        color: $gray;
+
+        &::after {
+          content: ',';
+        }
+
+        &.c-content-list__last-a {
+          &::after {
+            content: '';
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    color: $dark-gray;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    color: $gray;
+  }
+
+  &__sublist {
+    color: $gray;
+    list-style: none;
+    margin: 0 0 0 10px;
+
+    a {
+      color: $gray;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    @include res(phone-tablet-only) {
+      cursor: pointer;
+      display: inline-block;
+      position: absolute;
+      line-height: 0;
+      font-size: 0;
+      top: 0;
+      right: 0;
+      left: 0;
+      padding: 19px 18px;
+      height: 43px;
+      border-bottom: solid 1px $gray-border3;
+      background: darken($light-gray, 4%);
+
+      .c-icon {
+        fill: $gray-quote;
+        float: right;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
