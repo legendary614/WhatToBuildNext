@@ -8,3 +8,4 @@ npm-debug.log
 /yarn.lock
 /res/videos
 package-lock.json
+/.vscode
