@@ -8,16 +8,40 @@ add_theme_support( 'title-tag' );
 // 2. Register hooks
 
 // 2.1 Register assets hooks for frontend
-function enqueue_styles() {
+function whattobuildnext_enqueue_styles() {
     wp_enqueue_style( 'app.min.css', get_template_directory_uri().'/assets/css/app.min.css' );
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'whattobuildnext_enqueue_styles' );
 
-function enqueue_scripts() {
+function whattobuildnext_enqueue_scripts() {
 	wp_enqueue_script('app.min.js', get_template_directory_uri().'/assets/js/app.min.js', array('jquery'),  false, true);
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'whattobuildnext_enqueue_scripts' );
 
+// 3. Register widgets
+function whattobuildnext_widgets_init() {
+	register_sidebar(array(
+	  'name'          => 'Table of Contents Area',
+	  'id'            => 'table_of_contents_widget',
+	  'description'   => '',
+	  'before_widget' => '',
+	  'after_widget' => '',
+	  'before_title' => '',
+	  'after_title' => '',
+	) );
+}
+add_action( 'widgets_init', 'whattobuildnext_widgets_init' );
+
+// 4. Register navigation
+function whattobuildnext_register_navigation() {
+    register_nav_menus(
+        array(
+            'primary-menu' => 'Primary Menu',
+            'footer-menu' => 'Footer menu',
+        )
+    );
+}
+add_action( 'init', 'whattobuildnext_register_navigation' );
 
 // 5. Register custom theme elements
 
@@ -37,5 +61,12 @@ function whattobuildnext_time_ago() {
 	return human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ).' '.__( 'ago' );
 }
 
+// Allow to see pending posts
+function whattobuildnext_allow_pending_posts($qry) {
+	if (!is_admin() && current_user_can('edit_posts')) {
+	  $qry->set('post_status', array('publish','pending'));
+	}
+  }
+  add_action('pre_get_posts','whattobuildnext_allow_pending_posts');
 ?>
 

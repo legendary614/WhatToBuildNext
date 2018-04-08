@@ -50,9 +50,7 @@ function _get_main_posts() {
             $post_t['excerpt'] = ob_get_contents();
             ob_end_clean();
 
-            if(function_exists('get_field')) {
-              $post_t['background'] = get_field('background', get_the_ID());
-            }
+            $post_t['status'] = get_post_status($post_t['id']);
 
             $posts[] = $post_t;
         }
@@ -109,10 +107,12 @@ $data['posts'] = _get_main_posts();
       <div class="c-header__right">
         <div class="c-header__slogan">Understand Markets and Discover What To Build Next</div>
 
-        <nav class="c-header__menu">
-          <a class="c-header__menu-a" href="post.html">Suggest Topic</a>
-          <a class="c-header__menu-a" href="about.html">About</a>
-        </nav>
+        <?php
+          wp_nav_menu( array(
+              'theme_location' => 'primary-menu',
+              'menu_class' => 'c-header__menu'
+          ));
+        ?>
       </div>
 
       <div class="c-header__burger-btn">
@@ -135,18 +135,19 @@ $data['posts'] = _get_main_posts();
             </div>
             <div class="c-mm__toggleable-wrap">
 
-              <ul class="c-mm__nav">
-                <li class="c-mm__nav-li"><a class="c-mm__nav-a" href="post.html">Suggest Topic</a></li>
-                <li class="c-mm__nav-li"><a class="c-mm__nav-a" href="about.html">About</a></li>
-              </ul>
+              <?php
+                wp_nav_menu( array(
+                    'theme_location' => 'primary-menu',
+                    'menu_class' => 'c-mm__nav'
+                ));
+              ?>
 
-              <ul class="c-mm__nav c-mm__nav--bottom">
-                <li class="c-mm__nav-li"><a class="c-mm__nav-a" href="#">Privacy Policy</a></li>
-                <li class="c-mm__nav-li"><a class="c-mm__nav-a" href="#">Terms of Use</a></li>
-                <li class="c-mm__nav-li"><a class="c-mm__nav-a" href="#">Suggest Topic</a></li>
-                <li class="c-mm__nav-li"><a class="c-mm__nav-a" href="#">About</a></li>
-              </ul>
-
+              <?php
+                wp_nav_menu( array(
+                    'theme_location' => 'footer-menu',
+                    'menu_class' => 'c-mm__nav'
+                ));
+              ?>
             </div>
           </div>
         </div>
@@ -160,13 +161,12 @@ $data['posts'] = _get_main_posts();
   <footer class="c-footer">
     <div class="c-footer__inner">
       <div class="c-footer__copyright">&copy; WhatToBuildNext.com 2018</div>
-
-      <nav class="c-footer__menu">
-        <a class="c-footer__menu-a" href="#">Privacy Policy</a>
-        <a class="c-footer__menu-a" href="#">Terms of Use</a>
-        <a class="c-footer__menu-a" href="#">Suggest Topic</a>
-        <a class="c-footer__menu-a" href="about.html">About</a>
-      </nav>
+      <?php
+        wp_nav_menu( array(
+            'theme_location' => 'footer-menu',
+            'menu_class' => 'c-footer__menu'
+        ));
+      ?>
     </div>
   </footer>
   <?php wp_footer(); ?>

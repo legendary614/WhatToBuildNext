@@ -158,6 +158,7 @@ $data['posts'] = _get_main_posts();
   <main>
 
 <!-- frontpage -->
+
 <div class="c-content c-content--aside">
   <aside id="js-aside" class="c-aside">
     <div id="js-aside__inner" class="c-aside__inner">
@@ -167,30 +168,13 @@ $data['posts'] = _get_main_posts();
             <use xlink:href="#svg-arrow-down"></use>
           </svg>
         </li>
-        <li><a href="#">Trends</a>
-          <ul class="c-content-list__sublist">
-            <li><a href="#">Machine Learning</a></li>
-            <li><a href="#">Automation</a></li>
-            <li><a href="#">Rising upper class</a></li>
-          </ul>
-        </li>
-        <li><a href="#">What Has Been Built</a>
-          <ul class="c-content-list__sublist">
-            <li><a href="#">Robo advisors</a></li>
-            <li><a href="#">Crypto ETFs</a></li>
-          </ul>
-        </li>
-        <li><a href="#">What To Build Next</a>
-          <ul class="c-content-list__sublist">
-            <li><a href="#">White label systems</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Links to Resources</a></li>
-        <li><a href="#">Discussion <span>(320)</span></a></li>
+        <?php if ( is_active_sidebar( 'table_of_contents_widget' ) ) : ?>
+        <?php dynamic_sidebar( 'table_of_contents_widget' ); ?>
+        <?php endif; ?>
       </ul>
 
       <div class="c-aside__user">
-        <a class="c-aside__img" href="#"><img src="assets/img/profile.png" width="34" height="34"
+        <a class="c-aside__img" href="#"><img src="<?php echo get_the_author_meta();?>" width="34" height="34"
                                               alt="Marc Fencton"></a>
 
         <div class="c-posts__time c-posts__time--blue">
@@ -495,7 +479,6 @@ $data['posts'] = _get_main_posts();
             'menu_class' => 'c-footer__menu'
         ));
       ?>
-      
     </div>
   </footer>
   <?php wp_footer(); ?>
