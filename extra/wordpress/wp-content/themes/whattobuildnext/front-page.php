@@ -160,7 +160,7 @@ $data['posts'] = _get_main_posts();
 <!-- frontpage -->
 <section class="c-posts">
     <?php foreach($data['posts'] as $post) : ?>
-        <a href="<?php echo $post['permalink']; ?>" class="c-posts__post">
+        <a href="<?php if ($post['status'] == 'publish') echo $post['permalink']; ?>" class="c-posts__post">
             <div class="c-posts__pic">
                 <img class="c-posts__img" src="<?php echo $post['thumbnail']; ?>" alt="What to Build Next in Wealth Management">
                 <?php if ($post['status'] == 'publish') : ?>

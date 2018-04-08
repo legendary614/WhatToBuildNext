@@ -63,10 +63,16 @@ function whattobuildnext_time_ago() {
 
 // Allow to see pending posts
 function whattobuildnext_allow_pending_posts($qry) {
-	if (!is_admin() && current_user_can('edit_posts')) {
-	  $qry->set('post_status', array('publish','pending'));
-	}
-  }
-  add_action('pre_get_posts','whattobuildnext_allow_pending_posts');
+	$qry->set('post_status', array('publish','pending'));
+}
+add_action('pre_get_posts','whattobuildnext_allow_pending_posts');
+
+//get topic of post
+function get_the_topic(){
+	$slug = basename(get_permalink());
+	$topic = ucwords(str_replace("-", " ", $slug));
+	return $topic;
+}
+
 ?>
 

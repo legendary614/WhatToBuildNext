@@ -14,24 +14,26 @@
           </svg>
         </li>
         <?php if ( is_active_sidebar( 'table_of_contents_widget' ) ) : ?>
-        <?php dynamic_sidebar( 'table_of_contents_widget' ); ?>
+          <?php dynamic_sidebar( 'table_of_contents_widget' ); ?>
         <?php endif; ?>
       </ul>
 
       <div class="c-aside__user">
-        <a class="c-aside__img" href="#"><img src="<?php echo get_the_author_meta();?>" width="34" height="34"
+        <a class="c-aside__img" href="#"><img src="<?php echo get_avatar_url(get_the_author_meta('user_email'));?>" width="34" height="34"
                                               alt="Marc Fencton"></a>
 
         <div class="c-posts__time c-posts__time--blue">
           <svg class="c-icon c-icon--lightning c-posts__svg" width="10px" height="16px">
             <use xlink:href="#svg-lightning"></use>
           </svg>
-          2 hours ago
+          <?php
+            echo human_time_diff($data['posts'][0]['last_modified_time'], current_time('timestamp')).' '.__('ago'); /* post date in time ago format */ 
+          ?>
         </div>
       </div>
 
       <div class="c-aside__bottom">
-        <a href="#" id="js-follow" class="c-btn">Follow Wealth Management</a>
+        <a href="#" id="js-follow" class="c-btn">Follow <?php echo get_the_topic(); ?></a>
 
         <div class="c-aside__socials">
           <a class="c-icon-link" href="#">
@@ -60,256 +62,35 @@
   </aside>
 
   <section class="c-content__post">
-    <h1>What to Build Next in Wealth Management</h1>
-
-    <p>In the next ten years, heaps of wealth are going to move on to the next generation. Millions of millenials are
-      going to receive their babyboomer parents’ inheritences. Or sell their startups. Or crypto.</p>
-
-    <p>Either way, just like their parents they will be looking to manage that wealth. Their expectations are going to
-      be different, though. What products should we build for this market?</p>
+    <h1><?php echo $data['posts'][0]['title']; ?></h1>
+    <?php echo $data['posts'][0]['content']; ?>
   </section>
-
-  <article class="c-article">
-    <h2>
-      <span class="c-article__control">
-        <a class="c-icon-link" href="#">
-          <svg class="c-icon c-icon--black" width="24px" height="24px">
-            <use xlink:href="#svg-info"></use>
-          </svg>
-        </a>
-        <a class="c-icon-link" href="#">
-          <svg class="c-icon c-icon--black" width="24px" height="24px">
-            <use xlink:href="#svg-pencil"></use>
-          </svg>
-        </a>
-      </span>
-      Trends
-    </h2>
-    <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
-      sem
-      neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante
-      tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
-      eros
-      faucibus tincidunt.</p>
-
-    <div class="c-article__video">
-      <div class="c-article__video-wrapper">
-        <iframe width="629" height="353" src="https://www.youtube.com/embed/z7T54yHB1_A?rel=0"
-                allowfullscreen></iframe>
-      </div>
-    </div>
-    <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
-      sem
-      neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante
-      tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
-      eros
-      faucibus tincidunt.</p>
-
-    <h3>Machine Learning</h3>
-
-    <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
-      sem
-      neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante
-      tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
-      eros
-      faucibus tincidunt.</p>
-
-    <h3>Automation</h3>
-
-    <p>Etiam rhoncus. <a href="#">Maecenas tempus</a>, tellus eget condimentum rhoncus, sem quam semper libero, sit
-      amet
-      adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec
-      odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet
-      orci eget eros faucibus tincidunt.</p>
-
-    <h2>What Has Been Built</h2>
-
-    <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem.</p>
-
-    <div class="c-startups">
-      <div class="c-startups__startup">
-        <img class="c-startups__img" src="assets/img/logo-betterment.png" alt="Betterment">
-        <a class="c-startups__link c-icon-link" href="#" target="_blank">Betterment
-          <svg class="c-icon c-icon--black" width="10px" height="10px">
-            <use xlink:href="#svg-external-link"></use>
-          </svg>
-        </a>
-
-        <div class="c-startups__text">Digital Wealth Manager with 300,000 clients and $11 billion in assets under
-          management
-        </div>
-      </div>
-      <div class="c-startups__startup">
-        <img class="c-startups__img" src="assets/img/logo-betterment.png" alt="Betterment">
-        <a class="c-startups__link c-icon-link" href="#" target="_blank">Betterment
-          <svg class="c-icon c-icon--black" width="10px" height="10px">
-            <use xlink:href="#svg-external-link"></use>
-          </svg>
-        </a>
-
-        <div class="c-startups__text">Digital Wealth Manager with 300,000 clients and $11 billion in assets under
-          management
-        </div>
-      </div>
-
-      <div class="c-startups__startup">
-        <img class="c-startups__img" src="assets/img/logo-wealthfront.png" alt="Wealthfront">
-        <a class="c-startups__link c-icon-link" href="#" target="_blank">Wealthfront
-          <svg class="c-icon c-icon--black" width="10px" height="10px">
-            <use xlink:href="#svg-external-link"></use>
-          </svg>
-        </a>
-
-        <div class="c-startups__text">Digital Wealth Manager with 300,000 clients and $11 billion in assets under
-          management
-        </div>
-      </div>
-      <div class="c-startups__startup">
-        <img class="c-startups__img" src="assets/img/logo-wealthfront.png" alt="Wealthfront">
-        <a class="c-startups__link c-icon-link" href="#" target="_blank">Wealthfront
-          <svg class="c-icon c-icon--black" width="10px" height="10px">
-            <use xlink:href="#svg-external-link"></use>
-          </svg>
-        </a>
-
-        <div class="c-startups__text">Digital Wealth Manager with 300,000 clients and $11 billion in assets under
-          management
-        </div>
-      </div>
-
-      <div class="c-startups__startup">
-        <img class="c-startups__img" src="assets/img/logo-mint.png" alt="Mint">
-        <a class="c-startups__link c-icon-link" href="#" target="_blank">Mint
-          <svg class="c-icon c-icon--black" width="10px" height="10px">
-            <use xlink:href="#svg-external-link"></use>
-          </svg>
-        </a>
-
-        <div class="c-startups__text">Digital Wealth Manager with 300,000 clients and $11 billion in assets under
-          management
-        </div>
-      </div>
-      <div class="c-startups__startup">
-        <img class="c-startups__img" src="assets/img/logo-mint.png" alt="Mint">
-        <a class="c-startups__link c-icon-link" href="#" target="_blank">Mint
-          <svg class="c-icon c-icon--black" width="10px" height="10px">
-            <use xlink:href="#svg-external-link"></use>
-          </svg>
-        </a>
-
-        <div class="c-startups__text">Digital Wealth Manager with 300,000 clients and $11 billion in assets under
-          management
-        </div>
-      </div>
-    </div>
-
-    <h2>What To Build Next</h2>
-
-    <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
-      sem
-      neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante
-      tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
-      eros
-      faucibus tincidunt.</p>
-
-    <h3>White Label Systems</h3>
-
-    <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
-      sem
-      neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante
-      tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
-      eros
-      faucibus tincidunt.</p>
-
-    <h3>Automation</h3>
-
-    <p>Etiam rhoncus. <a href="#">Maecenas tempus</a>, tellus eget condimentum rhoncus, sem quam semper libero, sit
-      amet
-      adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec
-      odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet
-      orci eget eros faucibus tincidunt.</p>
-
-    <h2>Contributors</h2>
-
-    <p>Warm and special thanks to the contributors for providing their expertise. Without them this document would not
-      have been possible.</p>
-
-    <div class="c-contributors">
-      <div class="c-contributors__card">
-        <img class="c-contributors__img" src="assets/img/profile.png" alt="Marc Fencton">
-
-        <div class="c-contributors__about">
-          <div class="c-contributors__about-title">Marc Fencton</div>
-          <div class="c-contributors__about-text">Fintech analyst Citi Bank</div>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--black" width="18px" height="17px">
-              <use xlink:href="#svg-github"></use>
-            </svg>
-          </a>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--twitter" width="18px" height="15px">
-              <use xlink:href="#svg-twitter"></use>
-            </svg>
-          </a>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--linkedin" width="18px" height="18px">
-              <use xlink:href="#svg-linkedin"></use>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="c-contributors__card">
-        <img class="c-contributors__img" src="assets/img/profile.png" alt="Marc Fencton">
-
-        <div class="c-contributors__about">
-          <div class="c-contributors__about-title">Marc Fencton</div>
-          <div class="c-contributors__about-text">Fintech analyst Citi Bank</div>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--black" width="18px" height="17px">
-              <use xlink:href="#svg-github"></use>
-            </svg>
-          </a>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--twitter" width="18px" height="15px">
-              <use xlink:href="#svg-twitter"></use>
-            </svg>
-          </a>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--linkedin" width="18px" height="18px">
-              <use xlink:href="#svg-linkedin"></use>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="c-contributors__card">
-        <img class="c-contributors__img" src="assets/img/profile.png" alt="Marc Fencton">
-
-        <div class="c-contributors__about">
-          <div class="c-contributors__about-title">Marc Fencton</div>
-          <div class="c-contributors__about-text">Fintech analyst Citi Bank</div>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--black" width="18px" height="17px">
-              <use xlink:href="#svg-github"></use>
-            </svg>
-          </a>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--twitter" width="18px" height="15px">
-              <use xlink:href="#svg-twitter"></use>
-            </svg>
-          </a>
-          <a class="c-icon-link" href="#">
-            <svg class="c-icon c-icon--linkedin" width="18px" height="18px">
-              <use xlink:href="#svg-linkedin"></use>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </article>
 </div>
 
-<?php echo $data['posts'][0]['content']; ?>
+<div id="js-popup-follow" class="c-popup" style="display: none">
+  <section id="js-popup-follow-inner" class="c-popup__inner c-popup__inner--follow">
+    <button class="c-burger c-burger--close c-popup__close js-popup-follow-close">
+      <span class="c-burger__line"></span>
+    </button>
+    <div id="js-follow-form">
+      <div class="c-popup__h1">Be the first to discover new opportunities in Wealth Management</div>
+
+      <p class="c-popup__p">Emails are sent maximum once a week. You can <u>unsubscribe in one click</u> and your email
+        address
+        will <u>never be shared</u>. See our <a href="#">Privacy Policy</a>.</p>
+
+      <input class="c-popup__input" type="email" placeholder="Your email">
+
+      <button id="js-follow-submit" type="submit" class="c-btn c-popup__btn"><span class="c-btn__text">Follow Wealth Management</span>
+      </button>
+    </div>
+    <div id="js-follow-success" style="display: none">
+      <div class="c-popup__h1">Welcome</div>
+      <p class="c-popup__p">Please confirm your subscription by clicking the link we just sent you.</p>
+      <button type="submit" class="c-btn c-popup__btn js-popup-follow-close"><span class="c-btn__text">Done</span>
+      </button>
+    </div>
+  </section>
+</div>
 
 {% endblock %}
